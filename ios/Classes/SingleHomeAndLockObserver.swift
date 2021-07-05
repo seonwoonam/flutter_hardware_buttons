@@ -27,20 +27,24 @@ class SingleHomeAndLockObserver {
     
     // Add Lock Listener
     public func addLockListener(listener: LockListener) {
+        /*
         if lockListener == nil {
             lockListener = listener
             if homeListener == nil {
                 registerObserver()
             }
         }
+        */
     }
     
     // Remove Lock Listener
     public func removeLockListener(listener: LockListener) {
+        /*
         lockListener = nil
         if homeListener == nil {
             unregisterObserver()
         }
+        */
     }
     
     // Add Home Listener
@@ -63,13 +67,6 @@ class SingleHomeAndLockObserver {
     
     private func registerObserver() {
         // Lock Button
-        CFNotificationCenterAddObserver(
-            CFNotificationCenterGetDarwinNotifyCenter(),
-            Unmanaged.passUnretained(self).toOpaque(),
-            displayStatusChangedCallback,
-            "com.apple.springboard.lockcomplete" as CFString,
-            nil,
-            .deliverImmediately)
         
         // Home Button
         notificationCenter.addObserver(
@@ -81,12 +78,14 @@ class SingleHomeAndLockObserver {
     
     private func unregisterObserver() {
         // Lock Button
+        /*
         CFNotificationCenterRemoveObserver(
             CFNotificationCenterGetLocalCenter(),
             Unmanaged.passUnretained(self).toOpaque(),
             nil,
             nil)
-        
+        */
+
         // Home Button
         notificationCenter.removeObserver(self,
                                           name: UIApplication.willResignActiveNotification,
@@ -98,18 +97,16 @@ class SingleHomeAndLockObserver {
         guard let lockState = cfName?.rawValue as String? else {
             return
         }
-        
+        /*
         let catcher = Unmanaged<SingleHomeAndLockObserver>
             .fromOpaque(UnsafeRawPointer(OpaquePointer(cfObserver)!))
             .takeUnretainedValue()
         catcher.displayStatusChanged(lockState)
+        */
     }
     
     func displayStatusChanged(_ lockState: String) {
-        if lockState == "com.apple.springboard.lockcomplete" {
-            homeTask?.cancel()
-            lockListener?.onEvent()
-        }
+
     }
     
     // Home Button Detection

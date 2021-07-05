@@ -24,11 +24,12 @@ public class SwiftHardwareButtonsPlugin: NSObject, FlutterPlugin {
         homeStream.setStreamHandler(homeInstance)
         
         // LockButton
+        /*
         let lockInstance = LockButtonStreamHandler()
         let lockStream = FlutterEventChannel(name: ChannelName.lock,
                                              binaryMessenger: registrar.messenger())
         lockStream.setStreamHandler(lockInstance)
-        
+        */
     }
 
     public func handle(_ call: FlutterMethodCall,
