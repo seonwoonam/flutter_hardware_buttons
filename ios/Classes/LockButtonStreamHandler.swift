@@ -16,16 +16,18 @@ public class LockButtonStreamHandler: NSObject, FlutterStreamHandler, LockListen
         /*
         singleHomeAndLockObserver.addLockListener(listener: self)
         self.eventSink = events
-        return nil
         */
+        return nil
+        
     }
     
     public func onCancel(withArguments arguments: Any?) -> FlutterError? {
         /*
         singleHomeAndLockObserver.removeLockListener(listener: self)
         eventSink = nil
+         */
         return nil
-        */
+       
     }
     
     func onEvent() {
